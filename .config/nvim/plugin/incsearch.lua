@@ -1,0 +1,13 @@
+-- keymap("n", "/", "<Plug>(incsearch-forward)")
+-- keymap("n", "?", "<Plug>(incsearch-backward)")
+-- keymap("n", "z/", "<Plug>(incsearch-stay)")
+-- keymap("n", "g/", "<Plug>(incsearch-easymotion-/)")
+-- keymap("n", "g?", "<Plug>(incsearch-easymotion-?)")
+-- keymap("n", "gz/", "<Plug>(incsearch-easymotion-stay)")
+-- 
+-- keymap("n", "n", "<Plug>(incsearch-nohl-n)")
+-- keymap("n", "N", "<Plug>(incsearch-nohl-N)")
+-- keymap("n", "*", "<Plug>(incsearch-nohl-*)")
+-- keymap("n", "#", "<Plug>(incsearch-nohl-#)")
+-- keymap("n", "g*", "<Plug>(incsearch-nohl-g*)")
+-- keymap("n", "g#", "<Plug>(incsearch-nohl-g#)")
