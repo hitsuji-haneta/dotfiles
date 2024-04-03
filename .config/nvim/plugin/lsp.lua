@@ -57,9 +57,9 @@ require("mason-lspconfig").setup_handlers({
 
 require("lspsaga").setup({
 	lightbulb = {
-		enabled = false,
-		enable_in_insert = false,
-		virtual_text = false,
+    -- enable = false,
+    sign = false,
+    virtual_text = false,
 	},
 	-- border_style = "rounded",
 	-- show_outline = {
@@ -76,6 +76,7 @@ keymap("n", "<Leader>rn", "<cmd>Lspsaga rename<CR>")
 keymap("n", "<Leader>m", "<cmd>Lspsaga show_line_diagnostics<CR>")
 
 local null_ls = require("null-ls")
+-- local null_ls = require("none-ls")
 
 null_ls.setup({
 	debug = true,
@@ -90,6 +91,6 @@ null_ls.setup({
 
 		null_ls.builtins.diagnostics.flake8, -- python linter
 		null_ls.builtins.diagnostics.eslint,
-		null_ls.builtins.diagnostics.luacheck, -- lua linter
+		-- null_ls.builtins.diagnostics.luacheck, -- lua linter
 	},
 })
