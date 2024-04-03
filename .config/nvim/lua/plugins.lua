@@ -89,31 +89,29 @@ require("packer").startup(function(use)
 		tag = "v<CurrentMajor>.*",
 	})
 	use({
-		"jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
 		config = function()
-			require("null-ls").setup()
+			require("none-ls").setup()
 		end,
 		requires = { "nvim-lua/plenary.nvim" },
 	})
 
 	-- fuzzy finder
-	use({
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.1",
-		requires = { { "nvim-lua/plenary.nvim" } },
-	})
-	-- use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-	use({
-		"princejoogie/dir-telescope.nvim",
-		requires = { "nvim-telescope/telescope.nvim" },
-		config = function()
-			require("dir-telescope").setup({
-				hidden = true,
-				no_ignore = false,
-				show_preview = true,
-			})
-		end,
-	})
+  use({
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.4",
+    requires = { { "nvim-lua/plenary.nvim" } },
+  })
+  use({
+    "princejoogie/dir-telescope.nvim",
+    requires = { "nvim-telescope/telescope.nvim" },
+    config = function()
+      require("dir-telescope").setup({
+        hidden = true,
+        no_ignore = false,
+      })
+    end,
+  })
 
 	-- github copilot
 	use("github/copilot.vim")
@@ -123,6 +121,7 @@ require("packer").startup(function(use)
 	use("myusuf3/numbers.vim") -- toggle relative number
 	use("tyru/open-browser.vim")
 	use("kristijanhusak/vim-carbon-now-sh")
+  use("t9md/vim-quickhl") -- highlight
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
@@ -168,4 +167,10 @@ vim.cmd [[
 ]]
 
 -- carbon-now-sh
-keymap("v", "<Leader>sn", ":CarbonNowSh<CR>")
+keymap("v", "<Leader>sh", ":CarbonNowSh<CR>")
+
+-- quickhl
+keymap("n", "<Leader>hl", "<Plug>(quickhl-manual-this)")
+keymap("v", "<Leader>hl", "<Plug>(quickhl-manual-this)")
+keymap("n", "<Leader>HL", "<Plug>(quickhl-manual-reset)")
+keymap("v", "<Leader>HL", "<Plug>(quickhl-manual-reset)")
