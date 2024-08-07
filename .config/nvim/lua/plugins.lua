@@ -60,21 +60,24 @@ require("packer").startup(function(use)
 	use("simeji/winresizer")
 	use("windwp/nvim-autopairs")
 
-	-- lsp
-	use("neovim/nvim-lspconfig")
+  -- cmp
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/nvim-cmp")
+  use("onsails/lspkind.nvim")
+
+	-- lsp
+	use("neovim/nvim-lspconfig")
 	use({
 		"williamboman/mason.nvim",
 		run = ":MasonUpdate", -- :MasonUpdate updates registry contents
 	})
 	use("williamboman/mason-lspconfig.nvim")
 	use({
-		"glepnir/lspsaga.nvim",
-		branch = "main",
+    "nvimdev/lspsaga.nvim",
+    after = 'nvim-lspconfig',
 		config = function()
 			require("lspsaga").setup({})
 		end,
@@ -88,30 +91,31 @@ require("packer").startup(function(use)
 		"L3MON4D3/LuaSnip",
 		tag = "v<CurrentMajor>.*",
 	})
-	use({
+  use({
     "nvimtools/none-ls.nvim",
-		config = function()
-			require("none-ls").setup()
-		end,
-		requires = { "nvim-lua/plenary.nvim" },
-	})
+    dependencies = {
+      "nvimtools/none-ls-extras.nvim",
+    },
+    requires = { "nvim-lua/plenary.nvim" },
+  })
+  use("jay-babu/mason-null-ls.nvim")
 
 	-- fuzzy finder
-  use({
-    "nvim-telescope/telescope.nvim",
-    tag = "0.1.4",
-    requires = { { "nvim-lua/plenary.nvim" } },
-  })
-  use({
-    "princejoogie/dir-telescope.nvim",
-    requires = { "nvim-telescope/telescope.nvim" },
-    config = function()
-      require("dir-telescope").setup({
-        hidden = true,
-        no_ignore = false,
-      })
-    end,
-  })
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.4",
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
+	use({
+		"princejoogie/dir-telescope.nvim",
+		requires = { "nvim-telescope/telescope.nvim" },
+		config = function()
+			require("dir-telescope").setup({
+				hidden = true,
+				no_ignore = false,
+			})
+		end,
+	})
 
 	-- github copilot
 	use("github/copilot.vim")
@@ -121,7 +125,7 @@ require("packer").startup(function(use)
 	use("myusuf3/numbers.vim") -- toggle relative number
 	use("tyru/open-browser.vim")
 	use("kristijanhusak/vim-carbon-now-sh")
-  use("t9md/vim-quickhl") -- highlight
+	use("t9md/vim-quickhl") -- highlight
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
@@ -160,11 +164,11 @@ keymap("v", "<Leader>b", "<Plug>(openbrowser-smart-search)")
 -- copilot
 keymap("n", "<Leader>ai", ":Copilot panel<CR>")
 keymap("n", "<Leader>aix", ":Copilot disable<CR>")
-vim.cmd [[
+vim.cmd([[
   let g:copilot_filetypes = {
   \ 'move': v:false,
   \ }
-]]
+]])
 
 -- carbon-now-sh
 keymap("v", "<Leader>sh", ":CarbonNowSh<CR>")

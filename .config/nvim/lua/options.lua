@@ -1,6 +1,7 @@
 vim.cmd([[highlight ColorColumn guibg=#202020 ctermbg=lightgrey]])
 vim.cmd([[syntax enable]])
 vim.api.nvim_exec('language en_US', true)
+vim.cmd('command! Open silent exe "!open " . expand("%:p:h")') -- open dir
 
 local options = {
   number = true,

@@ -16,9 +16,9 @@ fi
 ### zinit
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
         print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
@@ -30,11 +30,9 @@ autoload -Uz _zinit
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
-
+    zdharma-continuum/z-a-patch-dl \
+    zdharma-continuum/z-a-as-monitor \
+    zdharma-continuum/z-a-bin-gem-node
 ### End of Zinit's installer chunk
 
 ### zinit plugin
@@ -47,8 +45,8 @@ zinit ice wait'!0'; zinit light zdharma/history-search-multi-word
 # It will only be loaded on first start
 zinit ice atinit"
         ZSH_TMUX_FIXTERM=true;
-        ZSH_TMUX_AUTOSTART=true;
-        ZSH_TMUX_AUTOCONNECT=true;"
+        ZSH_TMUX_AUTOSTART=false;
+        ZSH_TMUX_AUTOCONNECT=false;"
 zinit snippet OMZP::tmux
 tmux source-file ~/.tmux.conf
 
@@ -92,13 +90,6 @@ bindkey '^r^i' anyframe-widget-insert-filename
 bindkey '^re' anyframe-widget-cdr
 bindkey '^r^e' anyframe-widget-cdr
 
-
-### anyenv
-eval "$(anyenv init -)"
-### nodenv
-export PATH="$HOME/.anyenv/envs/nodenv/shims:$PATH"
-
-
 ### option
 setopt equals 
 setopt magic_equal_subst
@@ -113,38 +104,36 @@ setopt auto_param_slash
 ### alias
 alias grep='grep --color=auto'
 
-### exa
-if [[ $(command -v exa) ]]; then
-  alias e='exa -GF --icons --git'
+### eza
+if [[ $(command -v eza) ]]; then
+  alias e='eza -GF --icons --git'
   alias ls=e
-  alias ea='exa -aGF --icons --git'
+  alias ea='eza -aGF --icons --git'
   alias la=ea
-  alias ee='exa -aahlGF --icons --git'
+  alias ee='eza -aahlGF --icons --git'
   alias ll=ee
-  alias et='exa -T -L 3 -a -I "node_modules|.git|.cache" --icons'
+  alias et='eza -T -L 3 -a -I "node_modules|.git|.cache" --icons'
   alias lt=et
-  alias eta='exa -T -a -I "node_modules|.git|.cache" --color=always --icons | less -r'
+  alias eta='eza -T -a -I "node_modules|.git|.cache" --color=always --icons | less -r'
   alias lta=eta
   alias l='clear && ls'
 fi
 
 ### Go
-export 'GO111MODULE=on'
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 
 
-
 ### gcloud
-source "$(ibrew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "$(ibrew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+# source "$(ibrew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+# source "$(ibrew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
 
 
 ### kubenetes
-source <(kubectl completion zsh)
+# source <(kubectl completion zsh)
 alias k='kubectl'
-complete -F __start_kubectl k
+# complete -F __start_kubectl k
 
 
 ### Rust
@@ -157,7 +146,7 @@ export PATH=~/.local/bin:$PATH
 
 
 ### iterm2 integration
-source ~/.iterm2_shell_integration.zsh
+# source ~/.iterm2_shell_integration.zsh
 
 ### neovim
 alias vi='nvim'
@@ -165,6 +154,7 @@ alias vi='nvim'
 ### lazygit
 alias lg='lazygit'
 
+### foundry
 export PATH="$PATH:/Users/hitsuji-haneta/.foundry/bin"
 
 ### git
@@ -179,4 +169,17 @@ esac
 # pnpm end
 
 # docker (colima)
-export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
+# export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
+export DOCKER_HOST="unix://$HOME/.orbstack/run/docker.sock"
+
+# fnm
+eval "$(fnm env --use-on-cd)"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# java
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"

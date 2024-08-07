@@ -4,7 +4,8 @@ keymap("n", "<C-e>", ":Fern . -drawer -reveal=%:p -width=30 -toggle<CR>", { sile
 keymap("n", "<Plug>(fern-close-drawer)", ":FernDo close -drawer -stay<CR>", { noremap = false })
 
 local init_fern = function()
-  vim.api.nvim_buf_set_keymap(0, "n", "o", "<Plug>(fern-action-open)<Plug>(fern-close-drawer)", { noremap = false, silent = true })
+  vim.api.nvim_buf_set_keymap(0, "n", "o", "<Plug>(fern-action-open)<Plug>(fern-close-drawer)",
+    { noremap = false, silent = true })
   vim.api.nvim_buf_set_keymap(0, "n", "O", "<Plug>(fern-action-open)<C-h>", { noremap = false })
   vim.api.nvim_buf_set_keymap(0, "n", "<CR>", "<Plug>(fern-action-open)<C-h>", { noremap = false })
   vim.api.nvim_buf_set_keymap(0, "n", "r", "<Plug>(fern-action-reload:all)", { noremap = false })
@@ -19,9 +20,17 @@ local init_fern = function()
   vim.api.nvim_buf_set_keymap(0, "n", "p", "<Plug>(fern-action-preview:auto:toggle)", { noremap = false, silent = true })
   vim.api.nvim_buf_set_keymap(0, "n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
   vim.api.nvim_buf_set_keymap(0, "n", "K", "10k", { noremap = true })
+  vim.api.nvim_buf_set_keymap(0, "n", "s", "", { noremap = true })
 
-  keymap("n", "J", "10j")
-  keymap("n", "K", "10k")
+  local opts = { silent = true }
+  keymap("n", "J", "10j", opts)
+  keymap("n", "K", "10k", opts)
+  keymap("n", "sh", "<C-w>h", opts)
+  keymap("n", "sl", "<C-w>l", opts)
+  keymap("n", "sj", "<C-w>j", opts)
+  keymap("n", "sk", "<C-w>k", opts)
+  keymap("n", "<C-h>", "<C-w>h", opts)
+  keymap("n", "<C-l>", "<C-w>l", opts)
 
   vim.fn['glyph_palette#apply']()
   vim.opt.number = false
