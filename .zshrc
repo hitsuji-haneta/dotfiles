@@ -139,6 +139,9 @@ alias k='kubectl'
 ### Rust
 export CARGO_HOME="$HOME/.cargo"
 export PATH="$CARGO_HOME/bin:$PATH"
+export PATH="/opt/homebrew/bin/git:$PATH"
+. "$HOME/.cargo/env"
+source "$HOME/.cargo/env"
 
 
 ### AWS CLI
@@ -153,6 +156,9 @@ alias vi='nvim'
 
 ### lazygit
 alias lg='lazygit'
+
+### gptme
+alias ai='gptme'
 
 ### foundry
 export PATH="$PATH:/Users/hitsuji-haneta/.foundry/bin"
@@ -183,3 +189,6 @@ eval "$(pyenv init -)"
 # java
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+
+# ityfuzz
+export PATH="$PATH:/Users/hitsuji-haneta/.ityfuzz/bin"

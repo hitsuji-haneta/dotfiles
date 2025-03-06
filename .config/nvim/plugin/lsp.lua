@@ -63,16 +63,16 @@ lspconfig.solidity.setup({
 })
 
 require("lspsaga").setup({
-	lightbulb = {
-		-- enable = false,
-		sign = false,
-		virtual_text = false,
-	},
-	-- border_style = "rounded",
-	-- show_outline = {
-	--   win_width = 50,
-	--   auto_preview = false,
-	-- },
+  lightbulb = {
+    -- enable = false,
+    sign = false,
+    virtual_text = false,
+  },
+  -- border_style = "rounded",
+  -- show_outline = {
+  --   win_width = 50,
+  --   auto_preview = false,
+  -- },
 })
 
 keymap("n", "<Leader>h", "<cmd>Lspsaga hover_doc<CR>")

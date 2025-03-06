@@ -27,13 +27,14 @@ require("packer").startup(function(use)
 	use("nvim-tree/nvim-web-devicons")
 	use("lukas-reineke/indent-blankline.nvim")
 	use("rvmelkonian/move.vim")
+	use("MunifTanjim/nui.nvim")
 
 	-- window
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
-	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" }) -- others
+	use({ "akinsho/bufferline.nvim", tag = "v4.*", requires = "nvim-tree/nvim-web-devicons" }) -- others
 
 	-- filer
 	use("lambdalisue/fern.vim")
@@ -60,13 +61,13 @@ require("packer").startup(function(use)
 	use("simeji/winresizer")
 	use("windwp/nvim-autopairs")
 
-  -- cmp
+	-- cmp
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/nvim-cmp")
-  use("onsails/lspkind.nvim")
+	use("onsails/lspkind.nvim")
 
 	-- lsp
 	use("neovim/nvim-lspconfig")
@@ -76,8 +77,8 @@ require("packer").startup(function(use)
 	})
 	use("williamboman/mason-lspconfig.nvim")
 	use({
-    "nvimdev/lspsaga.nvim",
-    after = 'nvim-lspconfig',
+		"nvimdev/lspsaga.nvim",
+		-- after = "nvim-lspconfig",
 		config = function()
 			require("lspsaga").setup({})
 		end,
@@ -91,14 +92,14 @@ require("packer").startup(function(use)
 		"L3MON4D3/LuaSnip",
 		tag = "v<CurrentMajor>.*",
 	})
-  use({
-    "nvimtools/none-ls.nvim",
-    dependencies = {
-      "nvimtools/none-ls-extras.nvim",
-    },
-    requires = { "nvim-lua/plenary.nvim" },
-  })
-  use("jay-babu/mason-null-ls.nvim")
+	use({
+		"nvimtools/none-ls.nvim",
+		dependencies = {
+			"nvimtools/none-ls-extras.nvim",
+		},
+		requires = { "nvim-lua/plenary.nvim" },
+	})
+	use("jay-babu/mason-null-ls.nvim")
 
 	-- fuzzy finder
 	use({
@@ -117,8 +118,29 @@ require("packer").startup(function(use)
 		end,
 	})
 
-	-- github copilot
+	-- copilot / AI coding
 	use("github/copilot.vim")
+	use({
+		"CopilotC-Nvim/CopilotChat.nvim",
+		tag = "v3.7.0",
+		requires = { "nvim-lua/plenary.nvim", "github/copilot.vim" },
+	})
+  use({
+    "yetone/avante.nvim",
+    branch = "main",
+    requires = {
+      "nvim-treesitter/nvim-treesitter",
+      "stevearc/dressing.nvim",
+      "MunifTanjim/nui.nvim",
+      "MeanderingProgrammer/render-markdown.nvim",
+      "hrsh7th/nvim-cmp",
+      "nvim-tree/nvim-web-devicons",
+      "HakonHarnes/img-clip.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-lua/popup.nvim",
+    },
+    run = "make",
+  })
 
 	-- others
 	use("preservim/nerdcommenter") -- comment
@@ -143,6 +165,7 @@ local keymap = vim.keymap.set
 vim.cmd([[colorscheme gruvbox-material]])
 vim.cmd([[let g:gruvbox_material_background = 'soft']])
 vim.cmd([[let g:gruvbox_material_disable_italic_comment = '1']])
+vim.cmd("highlight Comment guifg=#928374 guibg=NONE gui=NONE cterm=NONE")
 
 -- numbers
 keymap("n", "<Leader>n", ":NumbersToggle<CR>")
@@ -160,15 +183,6 @@ vim.cmd([[let g:mkdp_filetypes = ['markdown', 'md', 'puml', 'plantuml'] ]])
 -- browser
 keymap("n", "<Leader>b", "<Plug>(openbrowser-smart-search)")
 keymap("v", "<Leader>b", "<Plug>(openbrowser-smart-search)")
-
--- copilot
-keymap("n", "<Leader>ai", ":Copilot panel<CR>")
-keymap("n", "<Leader>aix", ":Copilot disable<CR>")
-vim.cmd([[
-  let g:copilot_filetypes = {
-  \ 'move': v:false,
-  \ }
-]])
 
 -- carbon-now-sh
 keymap("v", "<Leader>sh", ":CarbonNowSh<CR>")

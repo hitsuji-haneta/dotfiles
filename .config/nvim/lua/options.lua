@@ -3,6 +3,7 @@ vim.cmd([[syntax enable]])
 vim.api.nvim_exec('language en_US', true)
 vim.cmd('command! Open silent exe "!open " . expand("%:p:h")') -- open dir
 
+
 local options = {
   number = true,
   numberwidth = 4,
@@ -22,9 +23,7 @@ local options = {
   laststatus = 3,
   wildmode = "list:longest",
   ruler = true,
-  showcmd = true,
   list = true,
-  listchars = true,
   listchars = "trail:-,tab:>-,nbsp:%",
   expandtab = true,
   tabstop = 2,
