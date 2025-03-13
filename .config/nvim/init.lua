@@ -1,6 +1,4 @@
 require("base")
 require("keymaps")
-require("plugins")
+require("config.lazy") -- load plugins with lazy.nvim
 require("options")
-
--- vim.cmd[[autocmd BufWritePost plugins.lua PackerCompile]]
