@@ -13,6 +13,9 @@ return {
 					diffview = true,
 					telescope = true,
 				},
+				commit_editor = {
+					kind = "split",
+				},
 			})
 
 			vim.keymap.set("n", "<Leader>gi", ":Neogit<CR>", { silent = true })
