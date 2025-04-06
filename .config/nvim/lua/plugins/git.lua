@@ -10,6 +10,7 @@ return {
   {
     "tpope/vim-fugitive",
     config = function()
+      vim.keymap.set("n", "<Leader>gd", ":Gvdiffsplit<CR>", { silent = true })
     end,
   },
 }
