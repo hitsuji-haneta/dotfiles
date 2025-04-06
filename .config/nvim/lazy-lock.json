@@ -26,7 +26,6 @@
   "mason-null-ls.nvim": { "branch": "main", "commit": "de19726de7260c68d94691afb057fa73d3cc53e7" },
   "mason.nvim": { "branch": "main", "commit": "fc98833b6da5de5a9c5b1446ac541577059555be" },
   "move.vim": { "branch": "main", "commit": "d240bba74944c3d27d87c159862c9065e6029a3c" },
-  "neogit": { "branch": "master", "commit": "0542ca3aa9bf0b67b7b7713e4d230f9c1fc2c631" },
   "nerdcommenter": { "branch": "master", "commit": "66c07e4083ab02ed2540ac289cc602c70b858c13" },
   "nerdfont.vim": { "branch": "master", "commit": "3605ba4ba4dc0295f5eb400506fd05b451df3e1f" },
   "none-ls-extras.nvim": { "branch": "main", "commit": "6557f20e631d2e9b2a9fd27a5c045d701a3a292c" },
