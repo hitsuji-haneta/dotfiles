@@ -45,6 +45,7 @@
   "vim-carbon-now-sh": { "branch": "master", "commit": "31a18d26fc27e7bd5786da092ed886273b4cf639" },
   "vim-easyclip": { "branch": "master", "commit": "f1a3b95463402b30dd1e22dae7d0b6ea858db2df" },
   "vim-easymotion": { "branch": "master", "commit": "b3cfab2a6302b3b39f53d9fd2cd997e1127d7878" },
+  "vim-fugitive": { "branch": "master", "commit": "4a745ea72fa93bb15dd077109afbb3d1809383f2" },
   "vim-quickhl": { "branch": "master", "commit": "be1f44169c3fdee3beab629e83380515da03835e" },
   "vim-sandwich": { "branch": "master", "commit": "74cf93d58ccc567d8e2310a69860f1b93af19403" },
   "vim-visual-multi": { "branch": "master", "commit": "a6975e7c1ee157615bbc80fc25e4392f71c344d4" },

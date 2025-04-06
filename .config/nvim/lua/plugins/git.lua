@@ -7,4 +7,9 @@ return {
       vim.keymap.set("n", "<Leader>gh", ":DiffviewFileHistory<CR>", { silent = true })
     end,
   },
+  {
+    "tpope/vim-fugitive",
+    config = function()
+    end,
+  },
 }
