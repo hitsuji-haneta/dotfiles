@@ -57,5 +57,9 @@ vim.cmd([[
       endif
   endfunction
   command! -bang BufferDelete call BufferDelete()
-  nmap <C-d> :BufferDelete<CR> 
+  nmap <C-d> :BufferDelete<CR>
 ]])
+
+
+-- terminal
+keymap("t", "jk", "<C-\\><C-N>", opts)
