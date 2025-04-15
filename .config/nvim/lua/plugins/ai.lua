@@ -68,12 +68,28 @@ return {
 		event = "VeryLazy",
 		build = "make",
 		opts = {
-			provider = "claude",
+			provider = "gemini",
+			openai = {
+				endpoint = "https://api.openai.com/v1",
+				model = "gpt-4.1",
+				timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+				temperature = 0,
+				max_tokens = 1047576,
+				--reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+			},
 			claude = {
 				endpoint = "https://api.anthropic.com",
 				model = "claude-3-7-sonnet-20250219",
 				temperature = 0,
-				max_tokens = 4096,
+				max_tokens = 200000,
+				disabled_tools = { "python" },
+			},
+			gemini = {
+				-- @see https://ai.google.dev/gemini-api/docs/models/gemini
+				model = "gemini-2.5-pro-exp-03-25",
+				-- model = "gemini-1.5-flash",
+				temperature = 0,
+				max_tokens = 1047576,
 			},
 			web_search_engine = {
 				provider = "serpapi", -- tavily, serpapi, searchapi, google or kagi
