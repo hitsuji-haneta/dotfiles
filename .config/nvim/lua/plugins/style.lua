@@ -31,12 +31,34 @@ return {
 	{ "nvim-tree/nvim-web-devicons", lazy = false },
 
 	-- show indent lines
+	-- {
+	--   "lukas-reineke/indent-blankline.nvim",
+	--   main = "ibl",
+	--   ---@module "ibl"
+	--   ---@type ibl.config
+	--   opts = {},
+	-- },
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		---@module "ibl"
-		---@type ibl.config
-		opts = {},
+		"shellRaining/hlchunk.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			require("hlchunk").setup({
+        chunk = {
+          enable = true,
+          style = "#98971a",
+        },
+        indent = {
+          enable = true,
+        },
+        line_num = {
+          enable = true,
+          style = "#ebdbb2",
+        },
+        blank = {
+          enable = true,
+        },
+      })
+		end,
 	},
 
 	-- ui components
@@ -93,4 +115,10 @@ return {
 
 	-- syntax highlight for move lang
 	{ "rvmelkonian/move.vim" },
+
+	-- cursor
+	{
+    "sphamba/smear-cursor.nvim",
+    opts = {},
+  },
 }

@@ -1,7 +1,7 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-    event = "VeryLazy",
+		event = "VeryLazy",
 		opts = {},
 		config = function(_, opts)
 			local lspconfig = require("lspconfig")
@@ -83,6 +83,7 @@ return {
 					"move_analyzer",
 					-- other
 					"jsonls",
+					-- "sqls",
 				},
 				handlers = {
 					function(server)
@@ -99,7 +100,7 @@ return {
 	},
 	{
 		"nvimdev/lspsaga.nvim",
-    event = "VeryLazy",
+		event = "VeryLazy",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 			"nvim-treesitter/nvim-treesitter",
@@ -108,7 +109,7 @@ return {
 			lightbulb = {
 				-- enable = false,
 				sign = false,
-        virtual_text = false,
+				virtual_text = false,
 			},
 			-- border_style = "rounded",
 			-- show_outline = {
@@ -146,7 +147,7 @@ return {
 			"nvimtools/none-ls-extras.nvim",
 			"nvim-lua/plenary.nvim",
 		},
-    event = "VeryLazy",
+		event = "VeryLazy",
 		config = function(_, opts)
 			local null_ls = require("null-ls")
 			null_ls.setup({
@@ -176,13 +177,24 @@ return {
 	},
 	{
 		"jay-babu/mason-null-ls.nvim",
-    event = "VeryLazy",
+		event = "VeryLazy",
 		opts = {
 			ensure_installed = nil,
 			automatic_installation = true,
 		},
-    config = function(_, opts)
-      require("mason-null-ls").setup(opts)
-    end,
+		config = function(_, opts)
+			require("mason-null-ls").setup(opts)
+		end,
+	},
+	--- diagnostic message
+	{
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("tiny-inline-diagnostic").setup({
+				preset = "powerline",
+			})
+			vim.diagnostic.config({ virtual_text = false })
+		end,
 	},
 }
