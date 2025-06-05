@@ -192,3 +192,13 @@ export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
 # ityfuzz
 export PATH="$PATH:/Users/hitsuji-haneta/.ityfuzz/bin"
+
+# gcloud
+### The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/hitsuji-haneta/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/hitsuji-haneta/google-cloud-sdk/path.zsh.inc'; fi
+### The next line enables shell command completion for gcloud.
+if [ -f '/Users/hitsuji-haneta/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/hitsuji-haneta/google-cloud-sdk/completion.zsh.inc'; fi
+
+# claude code
+alias claude='claude --mcp-config ~/.config/mcphub/servers.json'
+

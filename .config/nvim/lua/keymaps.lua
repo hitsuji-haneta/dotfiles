@@ -61,5 +61,9 @@ vim.cmd([[
 ]])
 
 
+-- path
+keymap("n", "<Leader>p", ":echo expand('%')<CR>", opts)
+keymap("n", "<Leader>fp", ":echo expand('%:p')<CR>", opts)
+
 -- terminal
 keymap("t", "jk", "<C-\\><C-N>", opts)
