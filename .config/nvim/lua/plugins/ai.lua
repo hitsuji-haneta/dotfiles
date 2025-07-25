@@ -132,9 +132,19 @@ return {
 					require("mcphub.extensions.avante").mcp_tool(),
 				}
 			end,
+      mapping = {
+      },
+			windows = {
+				ask = {
+					start_insert = false, -- Start insert mode when opening the ask window
+				},
+			},
 		},
 		config = function(_, opts)
 			require("avante").setup(opts)
+			keymap("n", "<Leader>ax", ":AvanteClear<CR>")
+			keymap("n", "<Leader>as", ":AvanteStop<CR>")
+			keymap("n", "<Leader>at", ":AvanteToggle<CR>")
 		end,
 	},
 	{

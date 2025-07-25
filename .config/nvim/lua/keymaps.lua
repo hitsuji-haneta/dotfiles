@@ -62,8 +62,10 @@ vim.cmd([[
 
 
 -- path
-keymap("n", "<Leader>p", ":echo expand('%')<CR>", opts)
-keymap("n", "<Leader>fp", ":echo expand('%:p')<CR>", opts)
+-- keymap("n", "<Leader>p", ":echo expand('%')<CR>", opts)
+-- keymap("n", "<Leader>fp", ":echo expand('%:p')<CR>", opts)
+keymap("n", "<Leader>p", ":let @+ = expand('%') | echo 'Copied relative path: ' . @+<CR>", opts)
+keymap("n", "<Leader>P", ":let @+ = expand('%:p') | echo 'Copied full path: ' . @+<CR>", opts)
 
 -- terminal
 keymap("t", "jk", "<C-\\><C-N>", opts)

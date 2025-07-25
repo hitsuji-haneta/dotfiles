@@ -43,21 +43,21 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("hlchunk").setup({
-        chunk = {
-          enable = true,
-          style = "#98971a",
-        },
-        indent = {
-          enable = true,
-        },
-        line_num = {
-          enable = true,
-          style = "#ebdbb2",
-        },
-        blank = {
-          enable = true,
-        },
-      })
+				chunk = {
+					enable = true,
+					style = "#98971a",
+				},
+				indent = {
+					enable = true,
+				},
+				line_num = {
+					enable = true,
+					style = "#ebdbb2",
+				},
+				blank = {
+					enable = true,
+				},
+			})
 		end,
 	},
 
@@ -118,7 +118,7 @@ return {
 
 	-- cursor
 	-- {
-  --   "sphamba/smear-cursor.nvim",
-  --   opts = {},
-  -- },
+	--   "sphamba/smear-cursor.nvim",
+	--   opts = {},
+	-- },
 }

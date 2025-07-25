@@ -175,8 +175,8 @@ esac
 # pnpm end
 
 # docker (colima)
-# export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
-export DOCKER_HOST="unix://$HOME/.orbstack/run/docker.sock"
+export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
+# export DOCKER_HOST="unix://$HOME/.orbstack/run/docker.sock"
 
 # fnm
 eval "$(fnm env --use-on-cd)"
@@ -201,4 +201,4 @@ if [ -f '/Users/hitsuji-haneta/google-cloud-sdk/completion.zsh.inc' ]; then . '/
 
 # claude code
 alias claude='claude --mcp-config ~/.config/mcphub/servers.json'
-
+alias ccm='ccmanager'
