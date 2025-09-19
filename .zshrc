@@ -200,5 +200,7 @@ if [ -f '/Users/hitsuji-haneta/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/
 if [ -f '/Users/hitsuji-haneta/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/hitsuji-haneta/google-cloud-sdk/completion.zsh.inc'; fi
 
 # claude code
-alias claude='claude --mcp-config ~/.config/mcphub/servers.json'
+alias claude='claude --mcp-config ~/.config/mcphub/servers.json --model claude-opus-4-1-20250805'
 alias ccm='ccmanager'
+export CLAUDE_CODE_AUTO_UPDATE=false
+alias ccset='claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context ide-assistant --project $(pwd) && claude mcp add --transport http context7 https://mcp.context7.com/mcp'
